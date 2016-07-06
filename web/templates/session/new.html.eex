@@ -1,0 +1,11 @@
+<%= form_for @conn, "/admin/sign_in", [as: :session], fn f -> %>
+  <%= label f, :email, class: "control-label" %>
+  <%= text_input f, :email, class: "form-control" %>
+  <%= error_tag f, :email %>
+
+  <%= label f, :password, class: "control-label" %>
+  <%= password_input f, :password, class: "form-control" %>
+  <%= error_tag f, :password %>
+
+  <%= submit "Sign In", class: "btn btn-primary" %>
+<% end %>
