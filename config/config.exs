@@ -28,6 +28,8 @@ config :ex_admin,
   module: UploadTest,
   modules: [
     UploadTest.ExAdmin.Dashboard,
+    UploadTest.ExAdmin.Category,
+    UploadTest.ExAdmin.Item
   ]
 
 # Configure Guardian
