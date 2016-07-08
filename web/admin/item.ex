@@ -2,12 +2,20 @@ defmodule UploadTest.ExAdmin.Item do
   use ExAdmin.Register
 
   register_resource UploadTest.Item do
+    index do
+      selectable_column
+
+      column :name
+
+      actions
+    end
+
     show question do
       attributes_table do
         row :name
         row :category
         row :resource, [], fn(i) ->
-          "<img src=\"#{UploadTest.Resource.url({i.resource, i}, :original, signed: true)}\" />"
+          "<img src=\"#{UploadTest.Resource.url({i.resource, i}, :thumb, signed: true)}\" />"
         end
         row :vector, [], fn(i) ->
           %HTTPoison.Response{body: body} = HTTPoison.get!(UploadTest.Vector.url({i.vector, i}, :original, signed: true))
