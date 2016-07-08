@@ -2,6 +2,7 @@ defmodule UploadTest.Item do
   use UploadTest.Web, :model
   use Arc.Ecto.Schema
 
+  @derive {Poison.Encoder, only: [:name]}
   schema "items" do
     field :name, :string
     field :resource, UploadTest.Resource.Type
