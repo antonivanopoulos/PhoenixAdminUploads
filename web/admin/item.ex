@@ -9,6 +9,10 @@ defmodule UploadTest.ExAdmin.Item do
         row :resource, [], fn(i) ->
           "<img src=\"#{UploadTest.Resource.url({i.resource, i}, :original, signed: true)}\" />"
         end
+        row :vector, [], fn(i) ->
+          %HTTPoison.Response{body: body} = HTTPoison.get!(UploadTest.Vector.url({i.vector, i}, :original, signed: true))
+          body
+        end
       end
     end
 
@@ -17,6 +21,7 @@ defmodule UploadTest.ExAdmin.Item do
         input item, :name
         #input item, :category
         input item, :resource
+        input item, :vector
       end
     end
   end
