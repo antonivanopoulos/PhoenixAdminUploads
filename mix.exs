@@ -19,7 +19,7 @@ defmodule UploadTest.Mixfile do
   def application do
     [mod: {UploadTest, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :ex_aws, :httpoison]]
   end
 
   # Specifies which paths to compile per environment.
@@ -40,7 +40,14 @@ defmodule UploadTest.Mixfile do
      {:cowboy, "~> 1.0"},
      {:ex_admin, github: "smpallen99/ex_admin"},
      {:guardian, "~> 0.12.0"},
-     {:comeonin, "~> 2.0"}]
+     {:comeonin, "~> 2.0"},
+     {:arc, "~> 0.5.3"},
+     {:ex_aws, "~> 0.4.10"},
+     {:httpoison, "~> 0.7"},
+     {:poison, "~> 1.2"},
+     {:arc_ecto, github: "stavro/arc_ecto"},
+     {:ex_queb, github: "E-MetroTel/ex_queb", override: true}
+    ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
