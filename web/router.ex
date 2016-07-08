@@ -37,4 +37,12 @@ defmodule UploadTest.Router do
     pipe_through [:browser, :admin]
     admin_routes
   end
+
+  scope "/api", UploadTest do
+    pipe_through :api
+
+    resources "/categories", CategoryController, only: [:index, :show] do
+      resources "/items", ItemController, only: [:index, :show]
+    end
+  end
 end

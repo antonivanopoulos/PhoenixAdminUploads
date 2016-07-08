@@ -1,6 +1,7 @@
 defmodule UploadTest.Category do
   use UploadTest.Web, :model
 
+  @derive {Poison.Encoder, only: [:name]}
   schema "categories" do
     field :name, :string
 
