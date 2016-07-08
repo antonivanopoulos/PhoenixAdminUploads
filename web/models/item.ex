@@ -1,8 +1,10 @@
 defmodule UploadTest.Item do
   use UploadTest.Web, :model
+  use Arc.Ecto.Schema
 
   schema "items" do
     field :name, :string
+    field :resource, UploadTest.Resource.Type
 
     belongs_to :category, UploadTest.Category
 
@@ -15,6 +17,7 @@ defmodule UploadTest.Item do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, @required_fields, @optional_fields)
+    |> cast_attachments(params, [:resource])
     |> cast_assoc(:category, required: true)
   end
 end

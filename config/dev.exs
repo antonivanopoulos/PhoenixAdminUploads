@@ -41,3 +41,12 @@ config :upload_test, UploadTest.Repo,
   database: "upload_test_dev",
   hostname: "localhost",
   pool_size: 10
+
+# Configure AWS
+config :arc,
+  bucket: System.get_env("AWS_S3_BUCKET")
+
+config :ex_aws,
+  access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),
+  secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY"),
+  region: System.get_env("AWS_S3_REGION")
