@@ -3,6 +3,9 @@ defmodule UploadTest.ItemController do
   alias UploadTest.Repo
   alias UploadTest.Item
 
+  plug Guardian.Plug.VerifyHeader, realm: "Bearer"
+  plug Guardian.Plug.EnsureAuthenticated, handler: UploadTest.Api.SessionController
+
   def index(conn, %{"category_id" => category_id}) do
     query = from i in Item,
               where: i.category_id == ^(category_id),

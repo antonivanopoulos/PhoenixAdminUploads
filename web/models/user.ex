@@ -1,6 +1,7 @@
 defmodule UploadTest.User do
   use UploadTest.Web, :model
 
+  @derive {Poison.Encoder, only: [:id,  :email]}
   schema "users" do
     field :email, :string
     field :encrypted_password, :string

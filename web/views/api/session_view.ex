@@ -1,4 +1,4 @@
-defmodule UploadTest.SessionView do
+defmodule UploadTest.Api.SessionView do
   use UploadTest.Web, :view
 
   def render("show.json", %{jwt: jwt, user: user}) do

@@ -3,6 +3,9 @@ defmodule UploadTest.CategoryController do
   alias UploadTest.Repo
   alias UploadTest.Category
 
+  plug Guardian.Plug.VerifyHeader, realm: "Bearer"
+  plug Guardian.Plug.EnsureAuthenticated, handler: UploadTest.Api.SessionController
+
   def index(conn, _params) do
     categories = Repo.all(Category)
     render conn, categories: categories

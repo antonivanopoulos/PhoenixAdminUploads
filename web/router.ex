@@ -41,6 +41,10 @@ defmodule UploadTest.Router do
   scope "/api", UploadTest do
     pipe_through :api
 
+    post "/registrations", RegistrationController, :create
+    post "/sign_in", Api.SessionController, :create
+    delete "/sign_out", Api.SessionController, :delete
+
     resources "/categories", CategoryController, only: [:index, :show] do
       resources "/items", ItemController, only: [:index, :show]
     end
